@@ -6,23 +6,6 @@ CareHub is a hospital management system designed to simplify everyday hospital o
 
 ---
 
-## 📌 Table of Contents
-
-- [Overview](#-overview)
-- [Features](#-features)
-- [Technology Stack](#-technology-stack)
-- [Project Structure](#-project-structure)
-- [Prerequisites](#-prerequisites)
-- [Getting Started](#-getting-started)
-- [Database Configuration](#-database-configuration)
-- [Application Routes](#-application-routes)
-- [Docker Deployment](#-docker-deployment)
-- [Development Notes](#-development-notes)
-- [Security Considerations](#-security-considerations)
-- [License](#-license)
-
----
-
 ## ✨ Overview
 
 CareHub provides a centralized interface for managing essential hospital information. Built with ASP.NET Core MVC and Razor Views, the application follows the Model-View-Controller architecture and uses Entity Framework Core for database operations.
