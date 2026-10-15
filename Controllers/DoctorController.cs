@@ -1,0 +1,107 @@
+﻿using hospital.Data;
+using hospital.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace hospital.Controllers
+{
+    public class DoctorController : Controller
+    {
+        Hospital_db_context db = new Hospital_db_context();
+
+        // Doctors List
+        public IActionResult Index()
+        {
+            var doctors = db.Doctor
+                .Include(d => d.Department)
+                .ToList();
+
+            return View(doctors);
+        }
+
+        // Doctor Details
+        public IActionResult Details(int id)
+        {
+            var doctor = db.Doctor
+                .Include(d => d.Department)
+                .FirstOrDefault(d => d.Doctor_ID == id);
+
+            if (doctor == null)
+                return NotFound();
+
+            return View(doctor);
+        }
+
+        // Add - GET
+        [HttpGet]
+        public IActionResult AddDoctor()
+        {
+            var departments = db.Department.ToList();
+
+            return View(departments);
+        }
+
+        // Add - POST
+        [HttpPost]
+        public IActionResult SaveAdd(Doctor doc)
+        {
+            try
+            {
+                db.Doctor.Add(doc);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.InnerException?.Message ?? ex.Message);
+            }
+        }
+
+        // Update - GET
+        [HttpGet]
+        public IActionResult UpdateDoctor(int id)
+        {
+            var doctor = db.Doctor.Find(id);
+
+            if (doctor == null)
+                return NotFound();
+
+            var departments = db.Department.ToList();
+
+            ViewData["Doctor"] = doctor;
+
+            return View(departments);
+        }
+
+        // Update - POST
+        [HttpPost]
+        public IActionResult SaveUpdate(Doctor doc)
+        {
+            db.Doctor.Update(doc);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        // Delete
+        public IActionResult DeleteDoctor(int id)
+        {
+            var treatments = db.Treatment
+                .Where(t => t.Doctor_ID == id)
+                .ToList();
+
+            db.Treatment.RemoveRange(treatments);
+
+            var doctor = db.Doctor.Find(id);
+
+            if (doctor != null)
+            {
+                db.Doctor.Remove(doctor);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+    }
+}

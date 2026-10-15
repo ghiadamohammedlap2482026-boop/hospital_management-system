@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="page-shell">
+    <section class="hero-panel mb-4">
+        <div class="eyebrow">Good morning · Operations dashboard</div>
+        <h1>Care coordination starts here.</h1>
+        <p>Keep your teams aligned, your records organized, and every patient journey moving forward.</p>
+        <div class="row g-3 mt-3">
+            <div class="col-sm-4"><div class="stat-card"><strong>04</strong><span>Core workspaces</span></div></div>
+            <div class="col-sm-4"><div class="stat-card"><strong>24/7</strong><span>Care visibility</span></div></div>
+            <div class="col-sm-4"><div class="stat-card"><strong>100%</strong><span>Team connected</span></div></div>
+        </div>
+    </section>
+
+    <div class="page-heading">
+        <div><div class="eyebrow">Your workspaces</div><h2>What would you like to manage?</h2></div>
+        <a asp-controller="Home" asp-action="Privacy" class="btn btn-outline-secondary">System guide</a>
+    </div>
+
+    <div class="row g-4">
+
+            <!-- Departments -->
+            <div class="col-lg-3 col-md-6">
+                <a asp-controller="Department"
+                   asp-action="Departments"
+                   class="dashboard-card">
+
+                    <div class="icon-box department-icon">⌂</div>
+
+                    <h3>Departments</h3>
+
+                    <p>
+                        Organize services, specialties, and teams
+                    </p>
+
+                </a>
+            </div>
+
+
+            <!-- Doctors -->
+            <div class="col-lg-3 col-md-6">
+                <a asp-controller="Doctor"
+                   asp-action="Index"
+                   class="dashboard-card">
+
+                    <div class="icon-box doctor-icon">
+                        ✚
+                    </div>
+
+                    <h3>Doctors</h3>
+
+                    <p>
+                        Keep your clinical team directory current
+                    </p>
+
+                </a>
+            </div>
+
+
+            <!-- Patients -->
+            <div class="col-lg-3 col-md-6">
+                <a asp-controller="Patient"
+                   asp-action="Patient"
+                   class="dashboard-card">
+
+                    <div class="icon-box patient-icon">
+                        ◉
+                    </div>
+
+                    <h3>Patients</h3>
+
+                    <p>
+                        Access patient records and key details
+                    </p>
+
+                </a>
+            </div>
+
+
+            <!-- Treatments -->
+            <div class="col-lg-3 col-md-6">
+                <a asp-controller="Treatment"
+                   asp-action="Treatments"
+                   class="dashboard-card">
+
+                    <div class="icon-box treatment-icon">
+                        +
+                    </div>
+
+                    <h3>Treatments</h3>
+
+                    <p>
+                        Track diagnoses and treatment plans
+                    </p>
+
+                </a>
+    </div>
+    </div>
+
+</div>

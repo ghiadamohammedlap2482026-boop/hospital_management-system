@@ -1,0 +1,46 @@
+﻿@model hospital.Models.Treatment
+
+@{
+    ViewData["Title"] = "Treatment Details";
+}
+
+<div class="container mt-4">
+
+    <h2>Treatment Details</h2>
+
+    <div class="card mt-3">
+
+        <div class="card-body">
+
+            <p>
+                <strong>Doctor:</strong>
+                @Model.Doctor?.Name
+            </p>
+
+            <p>
+                <strong>Patient:</strong>
+                @Model.Patient?.Name
+            </p>
+
+            <p>
+                <strong>Diagnosis:</strong>
+                @Model.Diagnosis
+            </p>
+
+            <a asp-action="UpdateTreatment"
+               asp-route-doctorId="@Model.Doctor_ID"
+               asp-route-patientId="@Model.Patient_ID"
+               class="btn btn-warning">
+                Update
+            </a>
+
+            <a asp-action="Treatments"
+               class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

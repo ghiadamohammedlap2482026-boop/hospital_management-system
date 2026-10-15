@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "About Us";
+}
+
+<div class="page-shell">
+    <section class="hero-panel mb-4">
+        <div class="eyebrow">About CareHub Hospital</div>
+        <h1>Compassionate care, connected teams.</h1>
+        <p>CareHub helps hospital teams organize information and coordinate better care for every patient.</p>
+    </section>
+
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <section class="card h-100 p-4">
+                <div class="eyebrow">Who we are</div>
+                <h2 class="h3 fw-bold mb-3">A hospital built around people</h2>
+                <p class="text-muted">Our hospital brings doctors, departments, patients, and treatment information together in one clear workspace.</p>
+                <p class="text-muted mb-0">We believe good healthcare depends on accurate information, thoughtful teamwork, and a simple experience for every member of the care team.</p>
+            </section>
+        </div>
+
+        <div class="col-lg-5">
+            <section class="card h-100 p-4">
+                <div class="eyebrow">Our values</div>
+                <div class="d-flex gap-3 mb-3">
+                    <span class="icon-box doctor-icon flex-shrink-0">✚</span>
+                    <div><h3 class="h6 fw-bold mb-1">Patient first</h3><p class="text-muted small mb-0">Every decision starts with better patient care.</p></div>
+                </div>
+                <div class="d-flex gap-3 mb-3">
+                    <span class="icon-box department-icon flex-shrink-0">⌂</span>
+                    <div><h3 class="h6 fw-bold mb-1">Teamwork</h3><p class="text-muted small mb-0">Connected teams deliver stronger outcomes.</p></div>
+                </div>
+                <div class="d-flex gap-3">
+                    <span class="icon-box patient-icon flex-shrink-0">✓</span>
+                    <div><h3 class="h6 fw-bold mb-1">Trust</h3><p class="text-muted small mb-0">Clear records support confident care.</p></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="d-flex gap-2 mt-4">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to dashboard</a>
+        <a asp-controller="Home" asp-action="Privacy" class="btn btn-outline-secondary">Privacy</a>
+    </div>
+</div>

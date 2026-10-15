@@ -1,0 +1,74 @@
+﻿@model List<hospital.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Doctor List";
+}
+
+<div class="container mt-4">
+
+    <h2>Doctor List</h2>
+    <hr />
+
+    <a href="/Doctor/AddDoctor" class="btn btn-info mb-3">
+        Add Doctor
+    </a>
+
+    <table class="table table-striped table-hover">
+
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Salary</th>
+                <th>Department</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var doctor in Model)
+            {
+                <tr>
+                    <td>@doctor.Doctor_ID</td>
+                    <td>@doctor.Name</td>
+                    <td>@doctor.Age</td>
+                    <td>@doctor.Email</td>
+                    <td>@doctor.Phone</td>
+                    <td>@doctor.Salary</td>
+
+                    <td>
+                        @(doctor.Department?.Department_Name ?? "No Department")
+                    </td>
+
+                    <td>
+                        <a href="/Doctor/Details/@doctor.Doctor_ID"
+                           class="btn btn-success">
+                            Details
+                        </a>
+
+                        <a href="/Doctor/UpdateDoctor/@doctor.Doctor_ID"
+                           class="btn btn-warning">
+                            Update
+                        </a>
+
+                        <a href="/Doctor/DeleteDoctor/@doctor.Doctor_ID"
+                           class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+    <a href="/Home/Index" class="btn btn-secondary">
+        Back
+    </a>
+
+</div>

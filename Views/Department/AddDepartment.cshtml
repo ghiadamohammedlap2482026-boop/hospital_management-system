@@ -1,0 +1,48 @@
+﻿@model hospital.Models.Department
+
+@{
+    ViewData["Title"] = "Add Department";
+}
+
+<div class="container mt-4">
+
+    <h2>New Department</h2>
+    <hr />
+
+    <form action="/Department/SaveAdd"
+          method="post">
+
+        <div class="mb-3">
+
+            <label>Department Name:</label>
+
+            <input type="text"
+                   class="form-control"
+                   name="Department_Name"
+                   placeholder="Enter Department Name">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Description:</label>
+
+            <textarea class="form-control"
+                      name="Description"
+                      placeholder="Enter Description"></textarea>
+
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">
+            Submit
+        </button>
+
+        <a href="/Department/Departments"
+           class="btn btn-secondary">
+            Back
+        </a>
+
+    </form>
+
+</div>

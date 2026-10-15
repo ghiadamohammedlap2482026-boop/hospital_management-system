@@ -1,0 +1,33 @@
+﻿@model hospital.Models.Department;
+
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<div class="container mt-4">
+    <h2>Department Details</h2>
+    <hr />
+
+    <div class="card shadow-sm" style="max-width: 500px;">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">@Model.Department_Name</h4>
+        </div>
+
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>(ID_Department):</strong> @Model.Department_ID
+                </li>
+                <li class="list-group-item">
+                    <strong>Name:</strong> @Model.Department_Name
+                </li>
+                <li class="list-group-item">
+                    <strong>Description:</strong> @Model.Description
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <a class="btn btn-outline-primary p-3" href="/Department/Departments"> Back</a>
+</div>
+

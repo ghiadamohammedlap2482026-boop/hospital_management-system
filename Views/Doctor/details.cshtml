@@ -1,0 +1,48 @@
+﻿@model hospital.Models.Doctor;
+
+@{
+    ViewData["Title"] = "Doctor Details";
+}
+
+<div class="container mt-4">
+    @if (Model is null)
+    {
+        <p>Doctor not found.</p>
+    }
+    else
+    {
+        <h2>Doctor Details</h2>
+        <hr />
+
+        <div class="card shadow" style="max-width: 400px;">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">@Model.Name</h5>
+            </div>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>ID:</strong> @Model.Doctor_ID
+                </li>
+                <li class="list-group-item">
+                    <strong>Age:</strong> @Model.Age
+                </li>
+                <li class="list-group-item">
+                    <strong>Salary:</strong> @Model.Salary
+                </li>
+                <li class="list-group-item">
+                    <strong>Email:</strong> @Model.Email
+                </li>
+                <li class="list-group-item">
+                    <strong>Phone:</strong> @Model.Phone
+                </li>
+                <li class="list-group-item">
+                    <strong>Department:</strong>
+                    @(Model.Department?.Department_Name ?? "No Department")
+                </li>
+            </ul>
+        </div>
+    }
+
+
+    <a class="btn btn-outline-primary p-3" href="/Doctor/Index"> Back</a>
+</div>

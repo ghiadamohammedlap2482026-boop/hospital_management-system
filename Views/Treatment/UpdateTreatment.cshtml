@@ -1,0 +1,98 @@
+﻿@model hospital.Models.Treatment
+
+@{
+    ViewData["Title"] = "Update Treatment";
+}
+
+<div class="container mt-4">
+
+    <h2>Update Treatment</h2>
+
+    <form asp-action="SaveUpdate" method="post">
+
+        <div class="mb-3">
+
+            <label asp-for="Doctor_ID"
+                   class="form-label">
+                Doctor
+            </label>
+
+            <select asp-for="Doctor_ID"
+                    class="form-select">
+
+                @foreach (var doctor in ViewBag.Doctors)
+                {
+                    <option value="@doctor.Doctor_ID">
+                        @doctor.Name
+                    </option>
+                }
+
+            </select>
+
+            <span asp-validation-for="Doctor_ID"
+                  class="text-danger">
+            </span>
+
+        </div>
+
+
+        <div class="mb-3">
+
+            <label asp-for="Patient_ID"
+                   class="form-label">
+                Patient
+            </label>
+
+            <select asp-for="Patient_ID"
+                    class="form-select">
+
+                @foreach (var patient in ViewBag.Patients)
+                {
+                    <option value="@patient.Patient_ID">
+                        @patient.Name
+                    </option>
+                }
+
+            </select>
+
+            <span asp-validation-for="Patient_ID"
+                  class="text-danger">
+            </span>
+
+        </div>
+
+
+        <div class="mb-3">
+
+            <label asp-for="Diagnosis"
+                   class="form-label">
+                Diagnosis
+            </label>
+
+            <textarea asp-for="Diagnosis"
+                      class="form-control">
+            </textarea>
+
+        </div>
+
+
+        <button type="submit"
+                class="btn btn-primary">
+            Update Treatment
+        </button>
+
+        <a asp-action="Treatments"
+           class="btn btn-secondary">
+            Back
+        </a>
+
+    </form>
+
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

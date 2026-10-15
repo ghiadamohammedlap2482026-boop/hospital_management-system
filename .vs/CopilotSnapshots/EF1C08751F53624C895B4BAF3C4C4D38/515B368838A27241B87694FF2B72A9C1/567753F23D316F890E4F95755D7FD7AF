@@ -1,0 +1,106 @@
+﻿:root {
+  --hospital-ink: #14213d;
+  --hospital-muted: #64748b;
+  --hospital-primary: #0f766e;
+  --hospital-primary-dark: #115e59;
+  --hospital-accent: #f59e0b;
+  --hospital-surface: #ffffff;
+  --hospital-background: #f4f8fb;
+  --hospital-border: #e2e8f0;
+  --hospital-shadow: 0 18px 45px rgba(15, 42, 67, .08);
+}
+
+html { font-size: 15px; position: relative; min-height: 100%; }
+
+@media (min-width: 768px) { html { font-size: 16px; } }
+
+body {
+  margin: 0 0 72px;
+  color: var(--hospital-ink);
+  background: var(--hospital-background);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.site-header {
+  background: rgba(255, 255, 255, .9);
+  border-bottom: 1px solid rgba(226, 232, 240, .85);
+  box-shadow: 0 4px 22px rgba(15, 42, 67, .04);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(14px);
+}
+
+.brand-mark {
+  align-items: center;
+  color: var(--hospital-ink) !important;
+  display: inline-flex;
+  font-size: 1.15rem;
+  font-weight: 800;
+  gap: .65rem;
+  letter-spacing: -.02em;
+}
+
+.brand-icon {
+  align-items: center;
+  background: linear-gradient(135deg, var(--hospital-primary), #2dd4bf);
+  border-radius: 12px;
+  color: white;
+  display: inline-flex;
+  font-size: 1.15rem;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.nav-link { border-radius: 10px; color: var(--hospital-muted) !important; font-weight: 600; margin: 0 .15rem; padding: .55rem .8rem !important; }
+.nav-link:hover, .nav-link.active { background: #ecfdf5; color: var(--hospital-primary) !important; }
+.site-main { min-height: calc(100vh - 145px); padding-top: 2.5rem; }
+
+.page-shell { animation: rise-in .45s ease both; }
+.page-heading { align-items: flex-end; display: flex; justify-content: space-between; margin-bottom: 1.75rem; gap: 1rem; }
+.page-heading h1, .page-heading h2 { font-size: clamp(1.65rem, 3vw, 2.25rem); font-weight: 800; letter-spacing: -.04em; margin: 0; }
+.eyebrow { color: var(--hospital-primary); font-size: .75rem; font-weight: 800; letter-spacing: .12em; margin-bottom: .45rem; text-transform: uppercase; }
+.page-subtitle { color: var(--hospital-muted); margin: .45rem 0 0; }
+
+.card, .table-responsive, form:not(.form-inline) {
+  background: var(--hospital-surface);
+  border: 1px solid var(--hospital-border) !important;
+  border-radius: 18px;
+  box-shadow: var(--hospital-shadow);
+}
+.table-responsive { overflow-x: auto; }
+.table { margin: 0; vertical-align: middle; }
+.table thead th { background: #f8fafc; border-bottom: 1px solid var(--hospital-border); color: #64748b; font-size: .73rem; letter-spacing: .08em; padding: 1rem; text-transform: uppercase; white-space: nowrap; }
+.table tbody td { border-color: #eef2f7; padding: 1rem; }
+.table tbody tr { transition: background .2s ease; }
+.table tbody tr:hover { background: #f8fffd; }
+.btn { border-radius: 10px; font-weight: 700; padding: .62rem 1rem; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn-primary, .btn-info { background: var(--hospital-primary); border-color: var(--hospital-primary); color: white; }
+.btn-primary:hover, .btn-info:hover { background: var(--hospital-primary-dark); border-color: var(--hospital-primary-dark); color: white; box-shadow: 0 8px 18px rgba(15, 118, 110, .22); }
+.btn-warning { color: #713f12; }
+.form-control, .form-select { border: 1px solid #dbe3ec; border-radius: 10px; min-height: 44px; padding: .65rem .8rem; }
+.form-control:focus, .form-select:focus, .form-check-input:focus { border-color: #5eead4; box-shadow: 0 0 0 .22rem rgba(45, 212, 191, .2); }
+label, .form-label { color: #334155; font-size: .9rem; font-weight: 700; }
+.text-danger { font-size: .85rem; }
+.footer { background: white; border-top: 1px solid var(--hospital-border); padding: 1.25rem 0; }
+
+.hero-panel { background: linear-gradient(135deg, #123b53 0%, #0f766e 100%); border-radius: 24px; color: white; overflow: hidden; padding: clamp(1.75rem, 5vw, 3.5rem); position: relative; }
+.hero-panel::after { background: rgba(255,255,255,.1); border-radius: 50%; content: ""; height: 320px; position: absolute; right: -90px; top: -145px; width: 320px; }
+.hero-panel > * { position: relative; z-index: 1; }
+.hero-panel .eyebrow { color: #99f6e4; }
+.hero-panel h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.055em; max-width: 700px; }
+.hero-panel p { color: #d9f7f2; font-size: 1.05rem; max-width: 600px; }
+.stat-card { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 1rem; }
+.stat-card strong { display: block; font-size: 1.45rem; }
+.dashboard-card { background: white; border: 1px solid var(--hospital-border); border-radius: 18px; color: var(--hospital-ink); display: block; height: 100%; padding: 1.5rem; text-decoration: none; transition: transform .25s ease, box-shadow .25s ease; }
+.dashboard-card:hover { box-shadow: var(--hospital-shadow); color: var(--hospital-ink); transform: translateY(-5px); }
+.icon-box { align-items: center; border-radius: 14px; display: flex; font-size: 1.7rem; height: 54px; justify-content: center; margin-bottom: 1rem; width: 54px; }
+.dashboard-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: .35rem; }
+.dashboard-card p { color: var(--hospital-muted); font-size: .9rem; margin: 0; }
+.department-icon { background: #e0f2fe; color: #0369a1; }.doctor-icon { background: #dcfce7; color: #15803d; }.patient-icon { background: #fef3c7; color: #b45309; }.treatment-icon { background: #fce7f3; color: #be185d; }
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus { box-shadow: 0 0 0 .22rem rgba(45, 212, 191, .25); }
+@keyframes rise-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 767px) { .site-main { padding-top: 1.5rem; } .page-heading { align-items: stretch; flex-direction: column; } .page-heading .btn { align-self: flex-start; } .hero-panel { border-radius: 18px; } }

@@ -1,0 +1,111 @@
+﻿@model hospital.Models.Treatment
+
+@{
+    ViewData["Title"] = "Add Treatment";
+}
+
+<div class="container mt-4">
+
+    <h2>Add Treatment</h2>
+
+    <form asp-action="SaveAdd" method="post">
+
+        <div class="mb-3">
+
+            <label asp-for="Doctor_ID"
+                   class="form-label">
+                Doctor
+            </label>
+
+            <select asp-for="Doctor_ID"
+                    class="form-select">
+
+                <option value="">
+                    -- Select Doctor --
+                </option>
+
+                @foreach (var doctor in ViewBag.Doctors)
+                {
+                    <option value="@doctor.Doctor_ID">
+                        @doctor.Name
+                    </option>
+                }
+
+            </select>
+
+            <span asp-validation-for="Doctor_ID"
+                  class="text-danger">
+            </span>
+
+        </div>
+
+
+        <div class="mb-3">
+
+            <label asp-for="Patient_ID"
+                   class="form-label">
+                Patient
+            </label>
+
+            <select asp-for="Patient_ID"
+                    class="form-select">
+
+                <option value="">
+                    -- Select Patient --
+                </option>
+
+                @foreach (var patient in ViewBag.Patients)
+                {
+                    <option value="@patient.Patient_ID">
+                        @patient.Name
+                    </option>
+                }
+
+            </select>
+
+            <span asp-validation-for="Patient_ID"
+                  class="text-danger">
+            </span>
+
+        </div>
+
+
+        <div class="mb-3">
+
+            <label asp-for="Diagnosis"
+                   class="form-label">
+                Diagnosis
+            </label>
+
+            <textarea asp-for="Diagnosis"
+                      class="form-control"
+                      placeholder="Enter diagnosis">
+            </textarea>
+
+            <span asp-validation-for="Diagnosis"
+                  class="text-danger">
+            </span>
+
+        </div>
+
+
+        <button type="submit"
+                class="btn btn-success">
+            Add Treatment
+        </button>
+
+        <a asp-action="Treatments"
+           class="btn btn-secondary">
+            Back
+        </a>
+
+    </form>
+
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,107 @@
+﻿using hospital.Data;
+using hospital.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace hospital.Controllers
+{
+    public class PatientController : Controller
+    {
+        Hospital_db_context db = new Hospital_db_context();
+
+        // Patients List
+        public IActionResult Patient()
+        {
+            var patients = db.Patient.ToList();
+
+            return View(patients);
+        }
+
+        // Details
+        public IActionResult Details(int id)
+        {
+            var patient = db.Patient
+                .FirstOrDefault(p => p.Patient_ID == id);
+
+            if (patient == null)
+                return NotFound();
+
+            return View(patient);
+        }
+
+        // Add - GET
+        [HttpGet]
+        public IActionResult AddPatient()
+        {
+            return View();
+        }
+
+        // Add - POST
+        [HttpPost]
+        public IActionResult SaveAdd(Patient patient)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Patient.Add(patient);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Patients");
+                }
+
+                return View("AddPatient", patient);
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.InnerException?.Message ?? ex.Message);
+            }
+        }
+
+        // Update - GET
+        [HttpGet]
+        public IActionResult UpdatePatient(int id)
+        {
+            var patient = db.Patient.Find(id);
+
+            if (patient == null)
+                return NotFound();
+
+            return View(patient);
+        }
+
+        // Update - POST
+        [HttpPost]
+        public IActionResult SaveUpdate(Patient patient)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Patient.Update(patient);
+                db.SaveChanges();
+
+                return RedirectToAction("Patients");
+            }
+
+            return View("UpdatePatient", patient);
+        }
+
+        // Delete
+        public IActionResult DeletePatient(int id)
+        {
+
+            var treatments = db.Treatment
+                .Where(t => t.Patient_ID == id)
+                .ToList();
+
+            db.Treatment.RemoveRange(treatments);
+
+            var patient = db.Patient.Find(id);
+
+            if (patient != null)
+            {
+                db.Patient.Remove(patient);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Patients");
+        }
+    }
+}
